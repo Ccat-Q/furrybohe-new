@@ -14,8 +14,8 @@ import java.util.concurrent.CompletableFuture;
 
 public class ColorFur extends ItemTagsProvider {
     public ColorFur(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider,
-                               CompletableFuture<TagLookup<Block>> blockTags, String modId,
-                               ExistingFileHelper existingFileHelper) {
+                    CompletableFuture<TagLookup<Block>> blockTags, String modId,
+                    ExistingFileHelper existingFileHelper) {
         super(output, lookupProvider, blockTags, modId, existingFileHelper);
     }
     
@@ -23,7 +23,7 @@ public class ColorFur extends ItemTagsProvider {
     protected void addTags(HolderLookup.@NotNull Provider provider) {
         var tag = this.tag(FurryBoHeTags.COLOR_FUR);
         FurryBoHeItemsRegister.COLOR_FUR_REGISTER.values().stream()
-                .map(RegistryObject::get)
-                .forEach(tag::add);
+                                                 .map(RegistryObject::get)
+                                                 .forEach(tag::add);
     }
 }

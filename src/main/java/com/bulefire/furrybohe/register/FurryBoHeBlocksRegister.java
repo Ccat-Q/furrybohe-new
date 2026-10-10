@@ -54,13 +54,13 @@ public class FurryBoHeBlocksRegister {
     public static final RegistryObject<Block> DRYING_RACK_REGISTER = register(
             "drying_rack",
             () -> new Block(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.SAND)
-                    .noCollission()
-                    .sound(SoundType.SCAFFOLDING)
-                    .dynamicShape()
-                    .isValidSpawn((state, getter, pos, entity) -> false)
-                    .pushReaction(PushReaction.DESTROY)
-                    .isRedstoneConductor((state, level, pos) -> false))
+                                                     .mapColor(MapColor.SAND)
+                                                     .noCollission()
+                                                     .sound(SoundType.SCAFFOLDING)
+                                                     .dynamicShape()
+                                                     .isValidSpawn((state, getter, pos, entity) -> false)
+                                                     .pushReaction(PushReaction.DESTROY)
+                                                     .isRedstoneConductor((state, level, pos) -> false))
     );
     
     /** 各色兽装部位注册【参考原版羊毛 WHITE_WOOL：柔软、可染色、装饰性放置】 */
@@ -73,12 +73,12 @@ public class FurryBoHeBlocksRegister {
     public static final RegistryObject<Block> COTTON_CROP_REGISTER = register(
             "cotton_crop",
             () -> new Block(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.PLANT)
-                    .noCollission()
-                    .randomTicks()
-                    .instabreak()
-                    .sound(SoundType.CROP)
-                    .pushReaction(PushReaction.DESTROY))
+                                                     .mapColor(MapColor.PLANT)
+                                                     .noCollission()
+                                                     .randomTicks()
+                                                     .instabreak()
+                                                     .sound(SoundType.CROP)
+                                                     .pushReaction(PushReaction.DESTROY))
     );
     
     public static @NotNull RegistryObject<Block> register(String id, Supplier<Block> block) {

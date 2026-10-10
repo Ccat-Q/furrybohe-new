@@ -13,7 +13,6 @@ import net.minecraft.world.item.DyeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.MerchantOffer;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -21,7 +20,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-@Mod.EventBusSubscriber(modid=FurryBoHe.MODID, bus=Mod.EventBusSubscriber.Bus.FORGE, value=Dist.CLIENT)
+@Mod.EventBusSubscriber(modid=FurryBoHe.MODID, bus=Mod.EventBusSubscriber.Bus.FORGE)
 public class FurryBoHeVillagerTradesRegister {
     
     @SubscribeEvent
@@ -42,7 +41,7 @@ public class FurryBoHeVillagerTradesRegister {
                 2,
                 0.05F
         ));
-
+        
         trades.get(1).add(new VillagerTrades.ItemListing() {
             @Override
             public @NotNull MerchantOffer getOffer(@NotNull Entity trader, @NotNull RandomSource rand) {
@@ -139,20 +138,21 @@ public class FurryBoHeVillagerTradesRegister {
         ));
         
         trades.get(3).add(new VillagerTrades.ItemListing() {
-            @Override
-            public @NotNull MerchantOffer getOffer(@NotNull Entity trader, @NotNull RandomSource rand) {
-                ItemStack dtd = new ItemStack(FurryBoHeItemsRegister.FURSUIT_BODY_DTD_REGISTER.get(), 1);
-                
-                dtd.getOrCreateTag().putBoolean(FursuitBodyDTDItem.SHAPED_KEY, false);
-                
-                return new MerchantOffer(
-                        new ItemStack(Items.EMERALD, 58),
-                        dtd,
-                        10,
-                        2,
-                        0.05F);
-            }
-        }
+                              @Override
+                              public @NotNull MerchantOffer getOffer(@NotNull Entity trader, @NotNull RandomSource rand) {
+                                  ItemStack dtd = new ItemStack(FurryBoHeItemsRegister.FURSUIT_BODY_DTD_REGISTER.get(), 1);
+                                  
+                                  dtd.getOrCreateTag().putBoolean(FursuitBodyDTDItem.SHAPED_KEY, false);
+                                  
+                                  return new MerchantOffer(
+                                          new ItemStack(Items.EMERALD, 58),
+                                          dtd,
+                                          10,
+                                          2,
+                                          0.05F
+                                  );
+                              }
+                          }
         );
         
         trades.get(3).add(new VillagerTrades.ItemListing() {
@@ -373,7 +373,7 @@ public class FurryBoHeVillagerTradesRegister {
                 2,
                 0.05F
         ));
-
+        
         trades.get(3).add(new VillagerTrades.ItemListing() {
             @Override
             public @NotNull MerchantOffer getOffer(@NotNull Entity trader, @NotNull RandomSource rand) {
@@ -413,7 +413,7 @@ public class FurryBoHeVillagerTradesRegister {
                 2,
                 0.05F
         ));
-
+        
         trades.get(4).add(new VillagerTrades.ItemListing() {
             @Override
             public @NotNull MerchantOffer getOffer(@NotNull Entity trader, @NotNull RandomSource rand) {
@@ -435,7 +435,7 @@ public class FurryBoHeVillagerTradesRegister {
                 );
             }
         });
-
+        
         trades.get(4).add(new VillagerTrades.ItemListing() {
             @Override
             public @NotNull MerchantOffer getOffer(@NotNull Entity trader, @NotNull RandomSource rand) {

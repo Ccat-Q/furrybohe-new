@@ -3,7 +3,6 @@ package com.bulefire.furrybohe.item;
 import com.bulefire.furrybohe.FurryBoHe;
 import com.bulefire.furrybohe.register.FurryBoHeItemsRegister;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -61,8 +60,10 @@ public class FurryBoHeItems {
     
     /** 空白结晶 */
     public static final Item BLANK_CRYSTAL = FurryBoHeItemsRegister.BLANK_CRYSTAL_REGISTER.get();
-    /** 各类特性结晶【键为特性名；耐久耗尽即损坏，损坏态由耐久状态表示，不再单独注册】
-     * <p>结晶耐久 2048，镶嵌并体现时每 5tick-0.1（-0.4/s）；耗尽后等级-1（最低至 1） */
+    /**
+     * 各类特性结晶【键为特性名；耐久耗尽即损坏，损坏态由耐久状态表示，不再单独注册】
+     * <p>结晶耐久 2048，镶嵌并体现时每 5tick-0.1（-0.4/s）；耗尽后等级-1（最低至 1）
+     */
     public static final Map<String, Item> SPECIAL_CRYSTAL = new HashMap<>();
     /** 【负面消除】结晶【不可镶嵌，一手拿结晶一手拿兽装 shift+右键 消除 1 个负面特性】 */
     public static final Item NEGATIVE_REMOVAL_CRYSTAL = FurryBoHeItemsRegister.NEGATIVE_REMOVAL_CRYSTAL_REGISTER.get();
@@ -218,9 +219,10 @@ public class FurryBoHeItems {
 }
 
 // 别学这个，我只是艺高人胆大（bushi
-@Mod.EventBusSubscriber(modid=FurryBoHe.MODID, bus=Mod.EventBusSubscriber.Bus.MOD, value=Dist.CLIENT)
+@Mod.EventBusSubscriber(modid=FurryBoHe.MODID, bus=Mod.EventBusSubscriber.Bus.MOD)
 class FurryBoHeItemsState {
     public static boolean loaded = false;
+    
     @SubscribeEvent
     public static void common(FMLCommonSetupEvent event) {
         loaded = true;

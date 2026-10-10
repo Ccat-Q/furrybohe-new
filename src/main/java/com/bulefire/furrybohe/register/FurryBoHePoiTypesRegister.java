@@ -20,7 +20,7 @@ public class FurryBoHePoiTypesRegister {
                                     1,
                                     5
                             )
-                    );
+            );
     
     /** 毛布商 poi 注册 */
     public static final RegistryObject<PoiType> FUR_TRADER_POI_REGISTER =
@@ -31,5 +31,5 @@ public class FurryBoHePoiTypesRegister {
                                     1,
                                     5
                             )
-                    );
+            );
 }

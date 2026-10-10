@@ -9,11 +9,14 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class FurryBoHeBlockEntityRegister {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES_REGISTER = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, FurryBoHe.MODID);
-
+    
     public static final RegistryObject<BlockEntityType<FurCraftingTableBlock.FurCraftingTableBlockEntity>> FUR_CRAFTING_TABLE_BLOCK_ENTITY_REGISTER =
-            BLOCK_ENTITIES_REGISTER.register("fur_crafting_table_block_entity", () ->
-                    BlockEntityType.Builder.of(
-                            FurCraftingTableBlock.FurCraftingTableBlockEntity::new,
-                            FurryBoHeBlocksRegister.FUR_CRAFTING_TABLE_REGISTER.get())
-                            .build(null));
+            BLOCK_ENTITIES_REGISTER.register(
+                    "fur_crafting_table_block_entity", () ->
+                            BlockEntityType.Builder.of(
+                                                   FurCraftingTableBlock.FurCraftingTableBlockEntity::new,
+                                                   FurryBoHeBlocksRegister.FUR_CRAFTING_TABLE_REGISTER.get()
+                                           )
+                                                   .build(null)
+            );
 }

@@ -24,11 +24,11 @@ public class FursuitEyes {
             Objects.requireNonNull(eye);
             
             ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, eye)
-                    .requires(dye)
-                    .requires(Items.PAPER)
-                    .requires(FurryBoHeItemsRegister.RESIN_FRAGMENT_REGISTER.get())
-                    .unlockedBy("has_" + color + "_dye", has.apply(dye))
-                    .save(consumer, new ResourceLocation("furrybohe", "fursuit_" + color.getName() + "_eyes"));
+                                  .requires(dye)
+                                  .requires(Items.PAPER)
+                                  .requires(FurryBoHeItemsRegister.RESIN_FRAGMENT_REGISTER.get())
+                                  .unlockedBy("has_" + color + "_dye", has.apply(dye))
+                                  .save(consumer, new ResourceLocation("furrybohe", "fursuit_" + color.getName() + "_eyes"));
         }
     }
 }

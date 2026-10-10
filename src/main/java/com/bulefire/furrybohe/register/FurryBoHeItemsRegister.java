@@ -71,8 +71,10 @@ public class FurryBoHeItemsRegister {
     
     /** 空白结晶注册 */
     public static final RegistryObject<Item> BLANK_CRYSTAL_REGISTER = register("blank_crystal");
-    /** 各类特性结晶注册【键为特性名；耐久耗尽即损坏，损坏态由耐久状态表示，不再单独注册】
-     * <p>结晶耐久 2048，镶嵌并体现时每 5tick-0.1（-0.4/s）；耗尽后等级-1（最低至 1） */
+    /**
+     * 各类特性结晶注册【键为特性名；耐久耗尽即损坏，损坏态由耐久状态表示，不再单独注册】
+     * <p>结晶耐久 2048，镶嵌并体现时每 5tick-0.1（-0.4/s）；耗尽后等级-1（最低至 1）
+     */
     public static final Map<String, RegistryObject<Item>> SPECIAL_CRYSTAL_REGISTER = new HashMap<>();
     /** 【负面消除】结晶注册【不可镶嵌，一手拿结晶一手拿兽装 shift+右键 消除 1 个负面特性】 */
     public static final RegistryObject<Item> NEGATIVE_REMOVAL_CRYSTAL_REGISTER = register("negative_removal_crystal");
@@ -120,19 +122,25 @@ public class FurryBoHeItemsRegister {
     
     /** 身体DTD注册【定型与否由状态表示】 */
     public static final RegistryObject<Item> FURSUIT_BODY_DTD_REGISTER =
-            register("fursuit_body_dtd",
-                     () -> new FursuitBodyDTDItem(
-                             new Item.Properties().setNoRepair().stacksTo(1)));
+            register(
+                    "fursuit_body_dtd",
+                    () -> new FursuitBodyDTDItem(
+                            new Item.Properties().setNoRepair().stacksTo(1))
+            );
     /** 直腿DTD注册【定型与否由状态表示】 */
     public static final RegistryObject<Item> FURSUIT_STRAIGHT_LEG_DTD_REGISTER =
-            register("fursuit_straight_leg_dtd",
-                     () -> new FursuitStraightLegDTDItem(
-                             new Item.Properties().setNoRepair().stacksTo(1)));
+            register(
+                    "fursuit_straight_leg_dtd",
+                    () -> new FursuitStraightLegDTDItem(
+                            new Item.Properties().setNoRepair().stacksTo(1))
+            );
     /** 曲腿DTD注册【直腿DTD+树脂5，独立合成产物】 */
     public static final RegistryObject<Item> FURSUIT_CURVED_LEG_DTD_REGISTER =
-            register("fursuit_curved_leg_dtd",
-                     () -> new FursuitCurvedLegDTDItem(
-                             new Item.Properties().setNoRepair().stacksTo(1)));
+            register(
+                    "fursuit_curved_leg_dtd",
+                    () -> new FursuitCurvedLegDTDItem(
+                            new Item.Properties().setNoRepair().stacksTo(1))
+            );
     
     // ================================================================
     // 图纸、手册与文书【空白/已设计/预设由设计数据表示，拓展由状态表示】
@@ -141,7 +149,7 @@ public class FurryBoHeItemsRegister {
     /** 兽装设计图纸注册【右键打开可预览全装样式；空白、已设计、预设均由设计数据表示】 */
     public static final RegistryObject<Item> FURSUIT_BLUEPRINTS_REGISTER = register("fursuit_blueprints");
     /** 装师手册注册【特性/设计储存/委托拓展由状态表示】 */
-    public static final RegistryObject<Item> FURSUIT_MANUAL_REGISTER = register("fursuit_manualfursuit_manual");
+    public static final RegistryObject<Item> FURSUIT_MANUAL_REGISTER = register("fursuit_manual");
     /** 委托单注册【设计图纸+空白设计图纸+纸，不消耗原设计图纸】 */
     public static final RegistryObject<Item> COMMISSION_FORM_REGISTER = register("commission_form");
     /** “品质升级”模板注册 */
@@ -251,7 +259,7 @@ public class FurryBoHeItemsRegister {
     /** 猫猫收集器注册【有猫猫在附近时收集猫猫能量，集满获得成就“喵？”】 */
     public static final RegistryObject<Item> CAT_ENERGY_COLLECTOR_REGISTER = register("cat_energy_collector");
     
-    static  {
+    static {
         for (DyeColor dyeColor : DyeColor.values()) {
             String color = dyeColor.getName();
             
@@ -281,7 +289,9 @@ public class FurryBoHeItemsRegister {
     }
     
     public static @NotNull RegistryObject<Item> register(@NotNull RegistryObject<? extends Block> block) {
-        return ITEMS_REGISTER.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));
+        RegistryObject<Item> roi = ITEMS_REGISTER.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));
+        all_item.add(roi);
+        return roi;
     }
     
     public static void registerAllItems(CreativeModeTab.ItemDisplayParameters parameters, CreativeModeTab.Output output) {

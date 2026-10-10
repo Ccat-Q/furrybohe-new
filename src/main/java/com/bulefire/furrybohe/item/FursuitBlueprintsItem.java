@@ -7,7 +7,7 @@ import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 public class FursuitBlueprintsItem extends Item {
-    private static final String STATUS_KEY = FurryBoHe.MODID+":status";
+    private static final String STATUS_KEY = FurryBoHe.MODID + ":status";
     public static final String EMPTY = "empty";
     public static final String DESIGNED = "designed";
     public static final String PRESET = "preset";
@@ -32,7 +32,7 @@ public class FursuitBlueprintsItem extends Item {
         CompoundTag tag = stack.getTag();
         if (tag == null) {
             tag = stack.getOrCreateTag();
-            tag.putString(STATUS_KEY, EMPTY );
+            tag.putString(STATUS_KEY, EMPTY);
         }
         
         return switch (tag.getString(STATUS_KEY)) {

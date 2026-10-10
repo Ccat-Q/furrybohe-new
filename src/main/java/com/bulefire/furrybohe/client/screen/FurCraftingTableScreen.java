@@ -1,4 +1,4 @@
-package com.bulefire.furrybohe.client.screnn;
+package com.bulefire.furrybohe.client.screen;
 
 import com.bulefire.furrybohe.FurryBoHe;
 import com.bulefire.furrybohe.menu.FurCraftingTableMenu;
@@ -17,8 +17,8 @@ public class FurCraftingTableScreen extends AbstractContainerScreen<FurCraftingT
     
     public FurCraftingTableScreen(FurCraftingTableMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
-         this.imageWidth = 176;
-         this.imageHeight = 166;
+        this.imageWidth = 176;
+        this.imageHeight = 166;
     }
     
     @Override

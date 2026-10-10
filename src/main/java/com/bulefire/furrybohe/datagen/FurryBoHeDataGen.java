@@ -19,7 +19,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
-@Mod.EventBusSubscriber(modid = FurryBoHe.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid=FurryBoHe.MODID, bus=Mod.EventBusSubscriber.Bus.MOD)
 public class FurryBoHeDataGen {
     @SubscribeEvent
     public static void gatherData(@NotNull GatherDataEvent event) {
@@ -36,13 +36,15 @@ public class FurryBoHeDataGen {
             protected void addTags(HolderLookup.@NotNull Provider provider) {}
         };
         generator.addProvider(event.includeServer(), blockTagsProvider);
-        generator.addProvider(event.includeServer(), new ColorFur(
-                packOutput,
-                lookupProvider,
-                blockTagsProvider.contentsGetter(),
-                FurryBoHe.MODID,
-                existingFileHelper
-        ));
+        generator.addProvider(
+                event.includeServer(), new ColorFur(
+                        packOutput,
+                        lookupProvider,
+                        blockTagsProvider.contentsGetter(),
+                        FurryBoHe.MODID,
+                        existingFileHelper
+                )
+        );
     }
     
     /**

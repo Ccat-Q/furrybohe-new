@@ -53,7 +53,7 @@ public class FurRecipe implements Recipe<Container> {
     
     public record CraftPlan(@NotNull ItemStack result, int leather, int filler, int dye, int damageCount) {
     }
-
+    
     public @Nullable CraftPlan plan(@NotNull Container in) {
         ItemStack leatherStack = in.getItem(0);
         ItemStack filler = in.getItem(1);
@@ -69,9 +69,9 @@ public class FurRecipe implements Recipe<Container> {
         int dyeCount = dyeStack.getCount();
         int fillerCount = filler.getCount() / cost;
         
-        int damageCount = Math.min(Math.min(leatherCount, Math.min(dyeCount, fillerCount)),10);
+        int damageCount = Math.min(Math.min(leatherCount, Math.min(dyeCount, fillerCount)), 10);
         
-        return new CraftPlan(result.copy(), Math.max(damageCount, 1), Math.max(cost*damageCount, 1), Math.max(damageCount, 1), 10-damageCount);
+        return new CraftPlan(result.copy(), Math.max(damageCount, 1), Math.max(cost * damageCount, 1), Math.max(damageCount, 1), 10 - damageCount);
     }
     
     @Override

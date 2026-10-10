@@ -99,8 +99,8 @@ public class FurCraftingTableMenu extends AbstractContainerMenu {
     private @Nullable FurRecipe findRecipe() {
         Level level = player.level();
         return level.getRecipeManager()
-                .getRecipeFor(FurryBoHeRecipesRegister.FUR_RECIPE_TYPE_REGISTER.get(), input, level)
-                .orElse(null);
+                    .getRecipeFor(FurryBoHeRecipesRegister.FUR_RECIPE_TYPE_REGISTER.get(), input, level)
+                    .orElse(null);
     }
     
     private FurRecipe.@Nullable CraftPlan currentPlan() {
@@ -117,19 +117,19 @@ public class FurCraftingTableMenu extends AbstractContainerMenu {
         
         FurRecipe.CraftPlan plan = currentPlan();
         if (plan == null) {
-            if (! result.getItem(0).isEmpty()) {
+            if (!result.getItem(0).isEmpty()) {
                 result.setItem(0, ItemStack.EMPTY);
             }
             return;
         }
         
         ItemStack desired = plan.result();
-        desired.setDamageValue((int) (desired.getMaxDamage() * plan.damageCount()*0.1));
-        if (! ItemStack.matches(result.getItem(0), desired)) {
+        desired.setDamageValue((int) (desired.getMaxDamage() * plan.damageCount() * 0.1));
+        if (!ItemStack.matches(result.getItem(0), desired)) {
             result.setItem(0, desired);
         }
     }
-
+    
     private void consumePlan() {
         FurRecipe.CraftPlan plan = currentPlan();
         if (plan == null) return;
@@ -148,8 +148,10 @@ public class FurCraftingTableMenu extends AbstractContainerMenu {
     private void addPlayerInventory(Inventory inv, int leftCol, int topRow) {
         for (int row = 0; row < 3; ++row) {
             for (int col = 0; col < 9; ++col) {
-                this.addSlot(new Slot(inv, col + row * 9 + 9,
-                                      leftCol + col * 18, topRow + row * 18));
+                this.addSlot(new Slot(
+                        inv, col + row * 9 + 9,
+                        leftCol + col * 18, topRow + row * 18
+                ));
             }
         }
     }
@@ -163,22 +165,22 @@ public class FurCraftingTableMenu extends AbstractContainerMenu {
     @Override
     public @NotNull ItemStack quickMoveStack(@NotNull Player player, int index) {
         Slot slot = this.slots.get(index);
-        if (! slot.hasItem()) return ItemStack.EMPTY;
+        if (!slot.hasItem()) return ItemStack.EMPTY;
         
         ItemStack stackInSlot = slot.getItem();
         ItemStack original = stackInSlot.copy();
         
         if (index == SLOT_RESULT) {
-            if (! this.moveItemStackTo(stackInSlot, MENU_SLOTS, this.slots.size(), true)) {
+            if (!this.moveItemStackTo(stackInSlot, MENU_SLOTS, this.slots.size(), true)) {
                 return ItemStack.EMPTY;
             }
             slot.onQuickCraft(stackInSlot, original);
         } else if (index < MENU_SLOTS) {
-            if (! this.moveItemStackTo(stackInSlot, MENU_SLOTS, this.slots.size(), true)) {
+            if (!this.moveItemStackTo(stackInSlot, MENU_SLOTS, this.slots.size(), true)) {
                 return ItemStack.EMPTY;
             }
         } else {
-            if (! this.moveItemStackTo(stackInSlot, 0, INPUT_SLOTS, false)) {
+            if (!this.moveItemStackTo(stackInSlot, 0, INPUT_SLOTS, false)) {
                 return ItemStack.EMPTY;
             }
         }
@@ -209,7 +211,7 @@ public class FurCraftingTableMenu extends AbstractContainerMenu {
         if (entity == null) {
             return true;
         }
-        return ! entity.isRemoved()
+        return !entity.isRemoved()
                 && player.distanceToSqr(entity.getBlockPos().getCenter()) <= 64.0;
     }
 }

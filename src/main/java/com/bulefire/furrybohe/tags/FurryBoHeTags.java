@@ -8,6 +8,8 @@ import net.minecraft.world.item.Item;
 
 public class FurryBoHeTags {
     public static final TagKey<Item> COLOR_FUR =
-            TagKey.create(Registries.ITEM,
-                          ResourceLocation.fromNamespaceAndPath(FurryBoHe.MODID, "color_fur"));
+            TagKey.create(
+                    Registries.ITEM,
+                    ResourceLocation.fromNamespaceAndPath(FurryBoHe.MODID, "color_fur")
+            );
 }

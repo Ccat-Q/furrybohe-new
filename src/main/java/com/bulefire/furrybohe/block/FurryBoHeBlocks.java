@@ -3,7 +3,6 @@ package com.bulefire.furrybohe.block;
 import com.bulefire.furrybohe.FurryBoHe;
 import com.bulefire.furrybohe.register.FurryBoHeBlocksRegister;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -43,10 +42,12 @@ public class FurryBoHeBlocks {
     /** 棉花植株【参考原版小麦 WHEAT：作物、无碰撞、随机刻、瞬间破坏】 */
     public static final Block COTTON_CROP = FurryBoHeBlocksRegister.COTTON_CROP_REGISTER.get();
 }
+
 // 好孩子别学这个，我只是艺高人胆大（bushi
-@Mod.EventBusSubscriber(modid=FurryBoHe.MODID, bus=Mod.EventBusSubscriber.Bus.MOD, value=Dist.CLIENT)
+@Mod.EventBusSubscriber(modid=FurryBoHe.MODID, bus=Mod.EventBusSubscriber.Bus.MOD)
 class FurryBoHeBlocksState {
     public static boolean loaded = false;
+    
     @SubscribeEvent
     public static void common(FMLCommonSetupEvent event) {
         loaded = true;

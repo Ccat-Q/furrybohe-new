@@ -39,7 +39,7 @@ public class FurCraftingTableBlock extends Block implements EntityBlock {
     
     @Override
     public @NotNull InteractionResult use(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull Player player, @NotNull InteractionHand hand, @NotNull BlockHitResult hit) {
-        if (! level.isClientSide()) {
+        if (!level.isClientSide()) {
             BlockEntity be = level.getBlockEntity(pos);
             if (be instanceof FurCraftingTableBlockEntity myBE) {
                 NetworkHooks.openScreen((ServerPlayer) player, myBE, pos);
@@ -52,12 +52,12 @@ public class FurCraftingTableBlock extends Block implements EntityBlock {
     public BlockEntity newBlockEntity(@NotNull BlockPos pos, @NotNull BlockState state) {
         return new FurCraftingTableBlockEntity(pos, state);
     }
-
+    
     @Override
     public void onRemove(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos,
                          @NotNull BlockState newState, boolean isMoving) {
-        if (! state.is(newState.getBlock())
-                && ! level.isClientSide()
+        if (!state.is(newState.getBlock())
+                && !level.isClientSide()
                 && level.getBlockEntity(pos) instanceof FurCraftingTableBlockEntity be) {
             Containers.dropContents(level, pos, be.getInput());
         }
@@ -135,47 +135,47 @@ public class FurCraftingTableBlock extends Block implements EntityBlock {
         
         private record SidedHandler(IItemHandlerModifiable base,
                                     boolean allowInsert) implements IItemHandlerModifiable {
-                    private SidedHandler(Container container, @Nullable Direction side) {
-                        this(new InvWrapper(container), side == null);
-                    }
-                    
-                    @Override
-                    public void setStackInSlot(int slot, @NotNull ItemStack stack) {
-                        base.setStackInSlot(slot, stack);
-                    }
-                    
-                    @Override
-                    public int getSlots() {
-                        return base.getSlots();
-                    }
-                    
-                    @Override
-                    public @NotNull ItemStack getStackInSlot(int slot) {
-                        return base.getStackInSlot(slot);
-                    }
-                    
-                    @Override
-                    public @NotNull ItemStack insertItem(int slot, @NotNull ItemStack stack, boolean simulate) {
-                        if (! allowInsert) {
-                            return stack;
-                        }
-                        return base.insertItem(slot, stack, simulate);
-                    }
-                    
-                    @Override
-                    public @NotNull ItemStack extractItem(int slot, int amount, boolean simulate) {
-                        return base.extractItem(slot, amount, simulate);
-                    }
-                    
-                    @Override
-                    public int getSlotLimit(int slot) {
-                        return base.getSlotLimit(slot);
-                    }
-                    
-                    @Override
-                    public boolean isItemValid(int slot, @NotNull ItemStack stack) {
-                        return allowInsert && base.isItemValid(slot, stack);
-                    }
+            private SidedHandler(Container container, @Nullable Direction side) {
+                this(new InvWrapper(container), side == null);
+            }
+            
+            @Override
+            public void setStackInSlot(int slot, @NotNull ItemStack stack) {
+                base.setStackInSlot(slot, stack);
+            }
+            
+            @Override
+            public int getSlots() {
+                return base.getSlots();
+            }
+            
+            @Override
+            public @NotNull ItemStack getStackInSlot(int slot) {
+                return base.getStackInSlot(slot);
+            }
+            
+            @Override
+            public @NotNull ItemStack insertItem(int slot, @NotNull ItemStack stack, boolean simulate) {
+                if (!allowInsert) {
+                    return stack;
                 }
+                return base.insertItem(slot, stack, simulate);
+            }
+            
+            @Override
+            public @NotNull ItemStack extractItem(int slot, int amount, boolean simulate) {
+                return base.extractItem(slot, amount, simulate);
+            }
+            
+            @Override
+            public int getSlotLimit(int slot) {
+                return base.getSlotLimit(slot);
+            }
+            
+            @Override
+            public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+                return allowInsert && base.isItemValid(slot, stack);
+            }
+        }
     }
 }
