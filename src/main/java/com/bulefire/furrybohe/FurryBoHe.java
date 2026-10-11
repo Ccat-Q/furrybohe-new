@@ -1,6 +1,6 @@
 package com.bulefire.furrybohe;
 
-import com.bulefire.furrybohe.register.*;
+import com.bulefire.furrybohe.common.registry.*;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
